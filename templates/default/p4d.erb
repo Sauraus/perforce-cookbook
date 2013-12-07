@@ -1,0 +1,46 @@
+#!/bin/bash
+#
+#       /etc/rc.d/init.d/p4d
+# chkconfig: 2345 80 30
+# description: starts/stops the perforce server (p4d)
+
+  # Source function library.
+  . /etc/init.d/functions
+
+    start() {
+    echo -n "Starting p4d: "
+    su - <%= @user + " -c \"#{@install_dir}/p4d -d -J #{@journal} -L #{@log} -r #{@root} -p #{@port}\"" %>
+    }
+
+    stop() {
+    echo -n "Shutting down p4d: "
+    #http://answers.perforce.com/articles/KB_Article/Shutting-Down-the-Perforce-Server
+    pidof p4d | xargs kill
+  }
+
+    case "$1" in
+    start)
+    start
+    ;;
+    stop)
+    stop
+    ;;
+    status)
+    status_p4d=`pidof p4d`
+    if test -n "$status_p4d" ; then
+    echo "running"
+    else
+    echo "stopped"
+    fi
+
+;;
+    restart)
+    stop
+    start
+    ;;
+
+    *)
+    echo "Usage: p4d {start|stop|status|restart}"
+    exit 1
+    ;;
+esac
