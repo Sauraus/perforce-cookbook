@@ -1,2 +1,7 @@
-cookbook 'perforce-cookbook', :path => '/Users/kallan/src/perforce-cookbook'
-cookbook 'homebrew', :locked_version => '1.0.0'
+{
+  "sources": {
+    "perforce": {
+      "path": "."
+    }
+  }
+}

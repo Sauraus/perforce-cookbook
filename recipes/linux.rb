@@ -12,7 +12,7 @@ directory node[:p4][:install_dir] do
   recursive true
 end
 
-perforce_p4 "12.1" do
+perforce_p4 node[:p4][:version] do
   directory node[:p4][:install_dir]
   sixty_four node[:kernel][:machine] == "x86_64"
 end
