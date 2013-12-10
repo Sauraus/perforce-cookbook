@@ -15,9 +15,19 @@ default[:p4d][:group]           = 'p4admin'
 
 default[:p4][:install_dir]     = '/opt/perforce'
 default[:p4d][:install_dir]     = '/opt/perforce'
-default[:p4d][:journal_dir]     = '/var/perforce/journal'
-default[:p4d][:log_dir]     = '/var/perforce/log'
-default[:p4d][:root_dir]     = '/var/perforce'
+
+default[:p4d][:journal_dir]     = '/var/perforce'
+default[:p4d][:journal_file]     = 'journal'
+
+default[:p4d][:log_dir]     = '/var/log/perforce'
+default[:p4d][:log_file]     = 'log'
+
+default[:p4d][:audit_dir]     = '/var/log/perforce'
+default[:p4d][:audit_file]     = 'audit'
+
+default[:p4d][:root_dir]     = '/var/perforce/depot'
+#default[:p4d][:depot_dir]     = '/var/perforce/depot'
+#default[:p4d][:depots]     = ['default']
 default[:p4d][:port]     = 1666
 
 default[:p4][:config_filename] = '.p4config'
@@ -39,4 +49,4 @@ default[:p4][:language]        = nil
 default[:p4][:host]            = nil
 
 default[:p4][:version] = '13.3'
-default[:p4d][:version] = default[:p4][:version]
+default[:p4d][:version] = '13.3'
