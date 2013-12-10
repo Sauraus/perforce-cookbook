@@ -9,10 +9,13 @@
 
     start() {
     echo -n "Starting p4d: "
-    su - <%= @user + " -c \"#{@install_dir}/p4d -d -J #{node[:p4d][:journal_dir]}/#{node[:p4d][:journal_file]} " +
-                     "-L #{node[:p4d][:log_dir]}/#{node[:p4d][:log_file]} " +
-                     "-A #{node[:p4d][:audit_dir]}/#{node[:p4d][:audit_file]} " +
-                     "-r #{@root} -p #{@port}\"" %>
+    su - <%= node[:p4d][:owner] +
+             " -c \"#{node[:p4d][:install_dir]}/p4d -d " +
+             "-J #{node[:p4d][:journal_dir]}/#{node[:p4d][:journal_file]} " +
+             "-L #{node[:p4d][:log_dir]}/#{node[:p4d][:log_file]} " +
+             "-A #{node[:p4d][:audit_dir]}/#{node[:p4d][:audit_file]} " +
+             "-r #{node[:p4d][:root_dir]} " +
+             "-p #{node[:p4d][:port]}\"" %>
     }
 
     stop() {
