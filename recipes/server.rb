@@ -48,13 +48,6 @@ end
 template "/etc/init.d/p4d" do
   mode 0755
   source "p4d.erb"
-  variables(:user => node[:p4d][:owner],
-            :install_dir => node[:p4d][:install_dir],
-            :root => node[:p4d][:root_dir],
-            :journal => node[:p4d][:journal_dir],
-            :log => node[:p4d][:log_dir],
-            :port => node[:p4d][:port]
-  )
 end
 
 service "p4d" do
