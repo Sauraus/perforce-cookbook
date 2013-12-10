@@ -19,15 +19,24 @@ directory node[:p4d][:root_dir] do
   recursive true
 end
 
-file node[:p4d][:journal_dir] do
+directory node[:p4d][:journal_dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
+  recursive true
   action :create
 end
 
-file node[:p4d][:log_dir] do
+directory node[:p4d][:log_dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
+  recursive true
+  action :create
+end
+
+directory node[:p4d][:audit_dir] do
+  owner node[:p4d][:owner]
+  group node[:p4d][:group]
+  recursive true
   action :create
 end
 
