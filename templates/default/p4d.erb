@@ -8,45 +8,59 @@
   . /etc/init.d/functions
 
     start() {
-    echo -n "Starting p4d: "
-    su - <%= node[:p4d][:owner] %>+
-             " -c \"<%= node[:p4d][:install_dir] %>/p4d -d " +
-             "-J <%= node[:p4d][:journal_dir] %>/<%= node[:p4d][:journal_file] %> " +
-             "-L <%= node[:p4d][:log_dir] %>/<%= node[:p4d][:log_file] %> " +
-             "-A <%= node[:p4d][:audit_dir] %>/<%= node[:p4d][:audit_file] %> " +
-             "-r <%= node[:p4d][:root_dir] %> " +
-             "-p <%= node[:p4d][:port] %>\""
+        if [ -e <%= "\"#{node[:p4d][:pidfile]}\"" %> ]; then
+            status_p4d=`pidof p4d`
+            if test -n "$status_p4d"; then
+                echo "Service p4d failed to start: p4d is already running"
+            else
+                echo "Service p4d failed to start: pid file <%= "#{node[:p4d][:pidfile]}" %> exists. Did p4d not stop correctly?"
+            fi
+        else
+            echo -n "Starting p4d: "
+            su - <%= node[:p4d][:owner] +
+                     " -c \"#{node[:p4d][:install_dir]}/p4d -d " +
+                     "-J #{node[:p4d][:journal_dir]}/#{node[:p4d][:journal_file]} " +
+                     "-L #{node[:p4d][:log_dir]}/#{node[:p4d][:log_file]} " +
+                     "-A #{node[:p4d][:audit_dir]}/#{node[:p4d][:audit_file]} " +
+                     "-r #{node[:p4d][:root_dir]} " +
+                     "-p #{node[:p4d][:port]}\"" %>
+            pidof p4d > <%= "#{node[:p4d][:pidfile]}"  %>
+        fi
     }
 
     stop() {
-    echo -n "Shutting down p4d: "
-    #http://answers.perforce.com/articles/KB_Article/Shutting-Down-the-Perforce-Server
-    pidof p4d | xargs kill
-  }
+        echo -n "Shutting down p4d: "
+        #http://answers.perforce.com/articles/KB_Article/Shutting-Down-the-Perforce-Server
+        value=$(< <%= "#{node[:p4d][:pidfile]}" %>)
+        kill "$value"
+        rm <%= "#{node[:p4d][:pidfile]}" %>
+    }
+
+    status() {
+        status_p4d=`pidof p4d`
+        if test -n "$status_p4d" ; then
+            echo "running"
+        else
+            echo "stopped"
+        fi
+    }
 
     case "$1" in
     start)
-    start
-    ;;
+        start
+        ;;
     stop)
-    stop
-    ;;
+        stop
+        ;;
     status)
-    status_p4d=`pidof p4d`
-    if test -n "$status_p4d" ; then
-    echo "running"
-    else
-    echo "stopped"
-    fi
-
-;;
+        status
+        ;;
     restart)
-    stop
-    start
-    ;;
-
+        stop
+        start
+        ;;
     *)
-    echo "Usage: p4d {start|stop|status|restart}"
-    exit 1
-    ;;
+        echo "Usage: p4d {start|stop|status|restart}"
+        exit 1
+        ;;
 esac
