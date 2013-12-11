@@ -22,8 +22,9 @@ default[:p4d][:journal_file]     = 'journal'
 default[:p4d][:log_dir]     = '/var/log/perforce'
 default[:p4d][:log_file]     = 'log'
 
-default[:p4d][:audit_dir]     = '/var/log/perforce'
-default[:p4d][:audit_file]     = 'audit'
+default[:p4d][:audit][:enabled] = true
+default[:p4d][:audit][:dir]     = '/var/log/perforce'
+default[:p4d][:audit][:file]     = 'audit'
 
 default[:p4d][:root_dir]     = '/var/perforce/depot'
 #default[:p4d][:depot_dir]     = '/var/perforce/depot'

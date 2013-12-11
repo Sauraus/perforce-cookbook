@@ -37,13 +37,13 @@ directory node[:p4d][:log_dir] do
   action :create
 end
 
-directory node[:p4d][:audit_dir] do
+directory node[:p4d][:audit][:dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
   mode 0700
   recursive true
   action :create
-end
+end if node[:p4d][:audit][:enabled]
 
 perforce_p4d node[:p4d][:version] do
   directory node[:p4d][:install_dir]
