@@ -11,7 +11,7 @@
 default[:p4][:owner]           = node[:current_user]
 default[:p4][:group]           = nil
 default[:p4d][:owner]           = 'perforce'
-default[:p4d][:group]           = 'p4admin'
+default[:p4d][:group]           = 'perforce'
 
 default[:p4][:install_dir]     = '/opt/perforce'
 default[:p4d][:install_dir]     = '/opt/perforce'
