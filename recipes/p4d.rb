@@ -56,5 +56,5 @@ service "p4d" do
 end
 
 execute "start-p4d" do
-  command "/etc/init.d/p4d start"
+  command "service p4d start"
 end
