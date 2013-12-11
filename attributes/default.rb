@@ -50,3 +50,5 @@ default[:p4][:host]            = nil
 
 default[:p4][:version] = '13.3'
 default[:p4d][:version] = '13.3'
+
+default[:p4d][:pidfile] = '/var/run/p4d.pid'
