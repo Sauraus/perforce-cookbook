@@ -32,7 +32,8 @@ default[:p4d][:port]     = 1666
 
 default[:p4][:config_filename] = '.p4config'
 
-default[:p4][:port]            = 'localhost:' + default[:p4d][:port].to_s
+default[:p4][:host]            = 'localhost'
+default[:p4][:port]            = node[:p4][:host] + ':' + default[:p4d][:port].to_s
 
 default[:p4][:user]            = default[:p4][:owner]
 default[:p4][:passwd]          = nil
