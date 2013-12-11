@@ -11,17 +11,20 @@ directory node[:p4d][:install_dir] do
   recursive true
   owner node[:p4d][:owner]
   group node[:p4d][:group]
+  mode 0700
 end
 
 directory node[:p4d][:root_dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
+  mode 0700
   recursive true
 end
 
 directory node[:p4d][:journal_dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
+  mode 0700
   recursive true
   action :create
 end
@@ -29,6 +32,7 @@ end
 directory node[:p4d][:log_dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
+  mode 0700
   recursive true
   action :create
 end
@@ -36,6 +40,7 @@ end
 directory node[:p4d][:audit_dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
+  mode 0700
   recursive true
   action :create
 end
