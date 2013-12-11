@@ -16,8 +16,9 @@ default[:p4d][:group]           = 'perforce'
 default[:p4][:install_dir]     = '/opt/perforce'
 default[:p4d][:install_dir]     = '/opt/perforce'
 
-default[:p4d][:journal_dir]     = '/var/perforce'
-default[:p4d][:journal_file]     = 'journal'
+default[:p4d][:journal][:enabled] = true
+default[:p4d][:journal][:dir]     = '/var/perforce'
+default[:p4d][:journal][:file]     = 'journal'
 
 default[:p4d][:log_dir]     = '/var/log/perforce'
 default[:p4d][:log_file]     = 'log'

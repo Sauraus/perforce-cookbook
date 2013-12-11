@@ -21,13 +21,13 @@ directory node[:p4d][:root_dir] do
   recursive true
 end
 
-directory node[:p4d][:journal_dir] do
+directory node[:p4d][:journal][:dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
   mode 0700
   recursive true
   action :create
-end
+end if node[:p4d][:journal][:enabled]
 
 directory node[:p4d][:log_dir] do
   owner node[:p4d][:owner]
