@@ -19,7 +19,11 @@
             echo -n "Starting p4d: "
             daemon --user <%= node[:p4d][:owner] %>\
             <%= node[:p4d][:install_dir] %>/p4d -d\
-            -J <%= node[:p4d][:journal_dir] %>/<%= node[:p4d][:journal_file] %>\
+            <% if node[:p4d][:journal][:enabled] %>
+            -J <%= node[:p4d][:journal][:dir] %>/<%= node[:p4d][:journal][:file] %>\
+            <% else %>
+            -J off\
+            <% end %>
             -L <%= node[:p4d][:log_dir] %>/<%= node[:p4d][:log_file] %>\
             <% if node[:p4d][:audit][:enabled] %>
             -A <%= node[:p4d][:audit][:dir] %>/<%= node[:p4d][:audit][:file] %>\
