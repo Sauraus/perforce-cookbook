@@ -12,9 +12,13 @@ directory node[:p4][:install_dir] do
   recursive true
 end
 
-perforce_p4 node[:p4][:version] do
-  directory node[:p4][:install_dir]
-  sixty_four node[:kernel][:machine] == "x86_64"
+remote_file 'p4' do
+  exe_file = node[:os] == "windows" ? "p4.exe" : "p4"
+  source get_ftp_path(node[:p4][:version], exe_file)
+  path "#{node[:p4][:install_dir]}/#{exe_file}"
+  owner node[:p4][:owner]
+  group node[:p4][:group]
+  mode 0755
 end
 
 template "/etc/profile.d/perforce.sh" do

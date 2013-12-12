@@ -1,3 +1,7 @@
+class Chef::Resource::RemoteFile
+  include PerforceFtp
+end
+
 user node[:p4d][:owner] do
   system true
   action :create
@@ -76,9 +80,13 @@ directory node[:p4d][:audit][:dir] do
   action :create
 end if node[:p4d][:audit][:enabled]
 
-perforce_p4d node[:p4d][:version] do
-  directory node[:p4d][:install_dir]
-  sixty_four node[:kernel][:machine] == "x86_64"
+remote_file 'p4d' do
+  exe_file = node[:os] == "windows" ? "p4d.exe" : "p4d"
+  source get_ftp_path(node[:p4d][:version], exe_file)
+  path "#{node[:p4d][:install_dir]}/#{exe_file}"
+  owner node[:p4d][:owner]
+  group node[:p4d][:group]
+  mode 0700
 end
 
 template "/etc/init.d/p4d" do
