@@ -21,6 +21,36 @@ directory node[:p4d][:root_dir] do
   recursive true
 end
 
+if node[:p4d][:depot_dir] != node[:p4d][:root_dir]
+  directory node[:p4d][:depot_dir] do
+    owner node[:p4d][:owner]
+    group node[:p4d][:group]
+    mode 0700
+    recursive true
+  end
+
+  node[:p4d][:depots].each { |d|
+    directory d do
+      owner node[:p4d][:owner]
+      group node[:p4d][:group]
+      mode 0700
+      path node[:p4d][:depot_dir] + '/' + d
+    end
+
+    file d do
+      owner node[:p4d][:owner]
+      group node[:p4d][:group]
+      mode 0700
+      path node[:p4d][:root_dir] + '/' + d
+    end
+
+    link d do
+      target_file node[:p4d][:root_dir] + '/' + d
+      to node[:p4d][:depot_dir] + '/' + d
+    end
+  }
+end
+
 directory node[:p4d][:journal][:dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
