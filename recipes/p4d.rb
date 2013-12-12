@@ -11,7 +11,8 @@ directory node[:p4d][:install_dir] do
   recursive true
   owner node[:p4d][:owner]
   group node[:p4d][:group]
-  mode 0700
+  permission = (node[:p4d][:install_dir] == node[:p4][:install_dir] && 0701) || 0700
+  mode permission
 end
 
 directory node[:p4d][:root_dir] do
