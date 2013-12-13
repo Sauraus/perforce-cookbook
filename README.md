@@ -38,6 +38,7 @@ Authors
 - Author:: Josiah Kiehl <josiah@bluepojo.com>
 - Author:: Kyle Allan <kallan@riotgames.com>
 - Author:: Brandon Chothia <brandon@roblox.com>
+- Author:: Antek Baranski <abaranski@roblox.com>
 
 - Copyright:: 2012, Riot Games
 - Copyright:: 2013, Roblox, Inc
