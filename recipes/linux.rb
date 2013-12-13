@@ -25,6 +25,8 @@ remote_file 'p4' do
 end
 
 template "/etc/profile.d/perforce.sh" do
+  owner 'root'
+  group 'root'
   mode 0755
   source "perforce.sh.erb"
   variables(:p4_port => node[:p4][:port],
