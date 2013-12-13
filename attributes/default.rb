@@ -8,8 +8,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
-default[:p4][:owner]           = node[:current_user]
-default[:p4][:group]           = nil
+default[:p4][:owner]           = 'perforce'
+default[:p4][:group]           = 'perforce'
 default[:p4d][:owner]           = 'perforce'
 default[:p4d][:group]           = 'perforce'
 
