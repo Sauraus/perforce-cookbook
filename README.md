@@ -31,3 +31,13 @@ Usage
 Include the recipe and set the attributes above as node or environment attributes
 
     include_recipe 'perforce'
+
+Authors
+==================
+
+- Author:: Josiah Kiehl <josiah@bluepojo.com>
+- Author:: Kyle Allan <kallan@riotgames.com>
+- Author:: Brandon Chothia <brandon@roblox.com>
+
+- Copyright:: 2012, Riot Games
+- Copyright:: 2013, Roblox, Inc

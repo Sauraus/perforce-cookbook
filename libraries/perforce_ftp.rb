@@ -1,3 +1,10 @@
+#
+# Cookbook Name:: perforce
+# module:: PerforceFtp
+#
+# Copyright 2013, Roblox Inc.
+#
+
 module PerforceFtp
   def get_ftp_path(version, executable_name)
     'ftp://ftp.perforce.com/perforce/' + get_complete_p4_path(version) + "/#{executable_name}"
