@@ -9,19 +9,20 @@ class Chef::Resource::RemoteFile
   include PerforceFtp
 end
 
-user node[:p4d][:owner] do
-  system true
+group node[:p4d][:group] do
   action :create
 end
 
-group node[:p4d][:group] do
+user node[:p4d][:owner] do
+  system true
+  gid node[:p4d][:group]
   action :create
 end
 
 directory node[:p4d][:install_dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
-  permission = (node[:p4d][:install_dir] == node[:p4][:install_dir] && 0701) || 0700
+  permission = (node[:p4d][:install_dir] == node[:p4][:install_dir] && 0755) || 0700
   mode permission
   recursive true
 end
@@ -33,32 +34,25 @@ directory node[:p4d][:root_dir] do
   recursive true
 end
 
-if node[:p4d][:depot_dir] != node[:p4d][:root_dir]
-  directory node[:p4d][:depot_dir] do
+if node[:p4d][:depots_dir] != node[:p4d][:root_dir]
+  directory node[:p4d][:depots_dir] do
     owner node[:p4d][:owner]
     group node[:p4d][:group]
-    mode 0700
+    mode 0600
     recursive true
   end
 
   node[:p4d][:depots].each { |d|
     directory d do
-      path "#{node[:p4d][:depot_dir]}/#{d}"
+      path "#{node[:p4d][:depots_dir]}/#{d}"
       owner node[:p4d][:owner]
       group node[:p4d][:group]
-      mode 0700
-    end
-
-    file d do
-      path "#{node[:p4d][:root_dir]}/#{d}"
-      owner node[:p4d][:owner]
-      group node[:p4d][:group]
-      mode 0700
+      mode 0600
     end
 
     link d do
       target_file "#{node[:p4d][:root_dir]}/#{d}"
-      to "#{node[:p4d][:depot_dir]}/#{d}"
+      to "#{node[:p4d][:depots_dir]}/#{d}"
     end
   }
 end
@@ -66,7 +60,7 @@ end
 directory node[:p4d][:journal][:dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
-  mode 0700
+  mode 0600
   recursive true
   action :create
 end if node[:p4d][:journal][:enabled]
@@ -74,7 +68,7 @@ end if node[:p4d][:journal][:enabled]
 directory node[:p4d][:log_dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
-  mode 0700
+  mode 0600
   recursive true
   action :create
 end
@@ -82,7 +76,7 @@ end
 directory node[:p4d][:audit][:dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
-  mode 0700
+  mode 0600
   recursive true
   action :create
 end if node[:p4d][:audit][:enabled]
@@ -104,8 +98,4 @@ end
 service "p4d" do
   supports :status => true, :restart => true
   action [ :enable, :start ]
-end
-
-execute "start-p4d" do
-  command "service p4d start"
 end
