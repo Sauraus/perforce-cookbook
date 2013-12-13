@@ -1,3 +1,10 @@
+#
+# Cookbook Name:: perforce
+# Recipe:: p4d
+#
+# Copyright 2013, Roblox Inc.
+#
+
 class Chef::Resource::RemoteFile
   include PerforceFtp
 end

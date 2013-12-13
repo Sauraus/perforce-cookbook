@@ -2,10 +2,7 @@
 # Cookbook Name:: perforce
 # Attribute:: default
 #
-# Author:: Josiah Kiehl <josiah@bluepojo.com>
 # Copyright 2012, Riot Games
-#
-# All rights reserved - Do Not Redistribute
 #
 
 default[:p4][:owner]           = 'perforce'

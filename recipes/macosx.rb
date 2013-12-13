@@ -2,13 +2,9 @@
 # Cookbook Name:: perforce
 # Recipe:: macosx
 #
-# Author:: Josiah Kiehl <josiah@bluepojo.com>
-# Author:: Kyle Allan <kallan@riotgames.com>
-#
 # Copyright 2012, Riot Games
 #
-# All rights reserved - Do Not Redistribute
-#
+
 include_recipe 'homebrew'
 
 package 'perforce'
