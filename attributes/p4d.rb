@@ -22,7 +22,7 @@ default[:p4d][:audit][:dir]     = '/var/log/perforce'
 default[:p4d][:audit][:file]     = 'audit'
 
 default[:p4d][:root_dir]     = '/var/perforce/root'
-default[:p4d][:depot_dir]     = '/var/perforce/depot'
+default[:p4d][:depots_dir]     = '/var/perforce/depot'
 default[:p4d][:depots]     = ['depot']
 default[:p4d][:port]     = 1666
 

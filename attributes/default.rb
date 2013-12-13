@@ -6,8 +6,8 @@
 # Copyright 2013, Roblox Inc.
 #
 
-default[:p4][:owner]           = 'perforce'
-default[:p4][:group]           = 'perforce'
+default[:p4][:owner]           = 'root'
+default[:p4][:group]           = 'root'
 
 default[:p4][:install_dir]     = '/opt/perforce'
 
@@ -15,7 +15,7 @@ default[:p4][:config_filename] = '.p4config'
 
 default[:p4][:host]            = 'localhost'
 default[:p4][:port_num]        = '1666'
-default[:p4][:port]            = node[:p4][:host] + ':' + node[:p4][:port_num]
+default[:p4][:port]            = "#{node[:p4][:host]}:#{node[:p4][:port_num]}"
 
 default[:p4][:user]            = node[:p4][:owner]
 default[:p4][:passwd]          = nil
