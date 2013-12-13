@@ -9,7 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box"
   config.omnibus.chef_version = :latest
 
-  config.vm.network :public_network, :public_network => "en0: Ethernet"
+  config.vm.network :public_network
 
   config.vm.provision :chef_solo do |chef|
     
