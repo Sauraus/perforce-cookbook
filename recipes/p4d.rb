@@ -19,11 +19,11 @@ group node[:p4d][:group] do
 end
 
 directory node[:p4d][:install_dir] do
-  recursive true
   owner node[:p4d][:owner]
   group node[:p4d][:group]
   permission = (node[:p4d][:install_dir] == node[:p4][:install_dir] && 0701) || 0700
   mode permission
+  recursive true
 end
 
 directory node[:p4d][:root_dir] do
@@ -43,22 +43,22 @@ if node[:p4d][:depot_dir] != node[:p4d][:root_dir]
 
   node[:p4d][:depots].each { |d|
     directory d do
+      path "#{node[:p4d][:depot_dir]}/#{d}"
       owner node[:p4d][:owner]
       group node[:p4d][:group]
       mode 0700
-      path node[:p4d][:depot_dir] + '/' + d
     end
 
     file d do
+      path "#{node[:p4d][:root_dir]}/#{d}"
       owner node[:p4d][:owner]
       group node[:p4d][:group]
       mode 0700
-      path node[:p4d][:root_dir] + '/' + d
     end
 
     link d do
-      target_file node[:p4d][:root_dir] + '/' + d
-      to node[:p4d][:depot_dir] + '/' + d
+      target_file "#{node[:p4d][:root_dir]}/#{d}"
+      to "#{node[:p4d][:depot_dir]}/#{d}"
     end
   }
 end
