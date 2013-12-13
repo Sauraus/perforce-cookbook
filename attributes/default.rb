@@ -3,38 +3,21 @@
 # Attribute:: default
 #
 # Copyright 2012, Riot Games
+# Copyright 2013, Roblox Inc.
 #
 
 default[:p4][:owner]           = 'perforce'
 default[:p4][:group]           = 'perforce'
-default[:p4d][:owner]           = 'perforce'
-default[:p4d][:group]           = 'perforce'
 
 default[:p4][:install_dir]     = '/opt/perforce'
-default[:p4d][:install_dir]     = '/opt/perforce'
-
-default[:p4d][:journal][:enabled] = true
-default[:p4d][:journal][:dir]     = '/var/perforce'
-default[:p4d][:journal][:file]     = 'journal'
-
-default[:p4d][:log_dir]     = '/var/log/perforce'
-default[:p4d][:log_file]     = 'log'
-
-default[:p4d][:audit][:enabled] = true
-default[:p4d][:audit][:dir]     = '/var/log/perforce'
-default[:p4d][:audit][:file]     = 'audit'
-
-default[:p4d][:root_dir]     = '/var/perforce/root'
-default[:p4d][:depot_dir]     = '/var/perforce/depot'
-default[:p4d][:depots]     = ['depot']
-default[:p4d][:port]     = 1666
 
 default[:p4][:config_filename] = '.p4config'
 
 default[:p4][:host]            = 'localhost'
-default[:p4][:port]            = node[:p4][:host] + ':' + default[:p4d][:port].to_s
+default[:p4][:port_num]        = '1666'
+default[:p4][:port]            = node[:p4][:host] + ':' + node[:p4][:port_num]
 
-default[:p4][:user]            = default[:p4][:owner]
+default[:p4][:user]            = node[:p4][:owner]
 default[:p4][:passwd]          = nil
 
 default[:p4][:diff]            = nil
@@ -49,6 +32,3 @@ default[:p4][:language]        = nil
 default[:p4][:host]            = nil
 
 default[:p4][:version] = '13.3'
-default[:p4d][:version] = '13.3'
-
-default[:p4d][:pidfile] = '/var/run/p4d.pid'
