@@ -28,7 +28,6 @@ default[:p4][:client]          = nil
 
 default[:p4][:charset]         = nil
 default[:p4][:commandcharset]  = nil
-default[:p4][:language]        = nil 
-default[:p4][:host]            = nil
+default[:p4][:language]        = nil
 
 default[:p4][:version] = '13.3'
