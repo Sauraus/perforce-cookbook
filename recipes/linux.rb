@@ -3,6 +3,7 @@
 # Recipe:: linux
 #
 # Copyright 2012, Riot Games
+# Copyright 2013, Roblox Inc.
 #
 
 user node[:p4][:owner] do
