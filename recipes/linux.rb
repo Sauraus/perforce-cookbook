@@ -8,6 +8,11 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+user node[:p4][:owner] do
+  system true
+  action :create
+end
+
 directory node[:p4][:install_dir] do
   recursive true
 end
