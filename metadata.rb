@@ -7,5 +7,3 @@ version          "0.0.5"
 
 supports         "mac_os_x"
 name "perforce"
-
-depends          "homebrew", "~> 1.0.0"
