@@ -2,9 +2,6 @@
   "sources": {
     "perforce": {
       "path": "."
-    },
-    "homebrew": {
-      "locked_version": "1.0.0"
     }
   }
 }
