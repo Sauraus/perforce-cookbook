@@ -38,7 +38,7 @@ if node[:p4d][:depots_dir] != node[:p4d][:root_dir]
   directory node[:p4d][:depots_dir] do
     owner node[:p4d][:owner]
     group node[:p4d][:group]
-    mode 0600
+    mode 0700
     recursive true
   end
 
@@ -47,7 +47,7 @@ if node[:p4d][:depots_dir] != node[:p4d][:root_dir]
       path "#{node[:p4d][:depots_dir]}/#{d}"
       owner node[:p4d][:owner]
       group node[:p4d][:group]
-      mode 0600
+      mode 0700
     end
 
     link d do
@@ -60,7 +60,7 @@ end
 directory node[:p4d][:journal][:dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
-  mode 0600
+  mode 0700
   recursive true
   action :create
 end if node[:p4d][:journal][:enabled]
@@ -68,7 +68,7 @@ end if node[:p4d][:journal][:enabled]
 directory node[:p4d][:log_dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
-  mode 0600
+  mode 0700
   recursive true
   action :create
 end
@@ -76,7 +76,7 @@ end
 directory node[:p4d][:audit][:dir] do
   owner node[:p4d][:owner]
   group node[:p4d][:group]
-  mode 0600
+  mode 0700
   recursive true
   action :create
 end if node[:p4d][:audit][:enabled]
