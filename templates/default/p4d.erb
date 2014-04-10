@@ -8,38 +8,38 @@
   . /etc/init.d/functions
 
     start() {
-        if [ -e <%= "\"#{node[:perforce][:p4d][:pidfile]}\"" %> ]; then
+        if [ -e <%= "\"#{node['perforce']['p4d']['pidfile']}\"" %> ]; then
             status_p4d=`pidof p4d`
             if test -n "$status_p4d"; then
                 echo "Service p4d failed to start: p4d is already running"
             else
-                echo "Service p4d failed to start: pid file <%= "#{node[:perforce][:p4d][:pidfile]}" %> exists. Did p4d not stop correctly?"
+                echo "Service p4d failed to start: pid file <%= "#{node['perforce']['p4d']['pidfile']}" %> exists. Did p4d not stop correctly?"
             fi
         else
             echo -n "Starting p4d: "
-            daemon --user <%= node[:perforce][:p4d][:owner] %>\
-            <%= node[:perforce][:p4d][:install_dir] %>/p4d -d\
-            <% if node[:perforce][:p4d][:journal][:enabled] %>
-            -J <%= node[:perforce][:p4d][:journal][:dir] %>/<%= node[:perforce][:p4d][:journal][:file] %>\
+            daemon --user <%= node['perforce']['p4d']['owner'] %>\
+            <%= node['perforce']['p4d']['install_dir'] %>/p4d -d\
+            <% if node['perforce']['p4d']['journal']['enabled'] %>
+            -J <%= node['perforce']['p4d']['journal']['dir'] %>/<%= node['perforce']['p4d']['journal']['file'] %>\
             <% else %>
             -J off\
             <% end %>
-            -L <%= node[:perforce][:p4d][:log_dir] %>/<%= node[:perforce][:p4d][:log_file] %>\
-            <% if node[:perforce][:p4d][:audit][:enabled] %>
-            -A <%= node[:perforce][:p4d][:audit][:dir] %>/<%= node[:perforce][:p4d][:audit][:file] %>\
+            -L <%= node['perforce']['p4d']['log_dir'] %>/<%= node['perforce']['p4d']['log_file'] %>\
+            <% if node['perforce']['p4d']['audit']['enabled'] %>
+            -A <%= node['perforce']['p4d']['audit']['dir'] %>/<%= node['perforce']['p4d']['audit']['file'] %>\
             <% end %>
-            -r <%= node[:perforce][:p4d][:root_dir] %>\
-            -p <%= node[:perforce][:p4d][:port] %>
-            pidof p4d > <%= "#{node[:perforce][:p4d][:pidfile]}"  %>
+            -r <%= node['perforce']['p4d']['root_dir'] %>\
+            -p <%= node['perforce']['p4d']['port'] %>
+            pidof p4d > <%= "#{node['perforce']['p4d']['pidfile']}"  %>
         fi
     }
 
     stop() {
         echo -n "Shutting down p4d: "
         #http://answers.perforce.com/articles/KB_Article/Shutting-Down-the-Perforce-Server
-        value=$(< <%= "#{node[:perforce][:p4d][:pidfile]}" %>)
+        value=$(< <%= "#{node['perforce']['p4d']['pidfile']}" %>)
         kill "$value"
-        rm <%= "#{node[:perforce][:p4d][:pidfile]}" %>
+        rm <%= "#{node['perforce']['p4d']['pidfile']}" %>
     }
 
     status() {

@@ -9,10 +9,10 @@ include_recipe 'homebrew'
 
 package 'perforce'
 
-p4 = node[:perforce][:p4]
-user_data = node[:etc][:passwd][p4[:owner]]
-home_dir_path = user_data[:dir]
-p4config_path = File.join home_dir_path, p4[:config_filename]
+p4 = node['perforce']['p4']
+user_data = node[:etc]['passwd'][p4['owner']]
+home_dir_path = user_data['dir']
+p4config_path = File.join home_dir_path, p4['config_filename']
 shellrc_path = File.join home_dir_path, case user_data[:shell]
                                         when '/bin/bash'
                                           '.bash_profile'
@@ -23,8 +23,8 @@ shellrc_path = File.join home_dir_path, case user_data[:shell]
 set_p4config_line = "p4 set P4CONFIG=\"#{p4config_path}\""
 
 template p4config_path do
-  owner     node[:owner]
-  group     node[:group]
+  owner     node['owner']
+  group     node['group']
   variables p4
 end
 
