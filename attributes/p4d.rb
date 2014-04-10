@@ -5,27 +5,27 @@
 # Copyright 2013, Roblox Inc.
 #
 
-default[:p4d][:owner]           = 'perforce'
-default[:p4d][:group]           = 'perforce'
+default[:perforce][:p4d][:owner]           = 'perforce'
+default[:perforce][:p4d][:group]           = 'perforce'
 
-default[:p4d][:install_dir]     = '/opt/perforce'
+default[:perforce][:p4d][:install_dir]     = '/opt/perforce'
 
-default[:p4d][:journal][:enabled] = true
-default[:p4d][:journal][:dir]     = '/var/perforce'
-default[:p4d][:journal][:file]     = 'journal'
+default[:perforce][:p4d][:journal][:enabled] = true
+default[:perforce][:p4d][:journal][:dir]     = '/var/perforce'
+default[:perforce][:p4d][:journal][:file]     = 'journal'
 
-default[:p4d][:log_dir]     = '/var/log/perforce'
-default[:p4d][:log_file]     = 'log'
+default[:perforce][:p4d][:log_dir]     = '/var/log/perforce'
+default[:perforce][:p4d][:log_file]     = 'log'
 
-default[:p4d][:audit][:enabled] = false
-default[:p4d][:audit][:dir]     = '/var/log/perforce'
-default[:p4d][:audit][:file]     = 'audit'
+default[:perforce][:p4d][:audit][:enabled] = false
+default[:perforce][:p4d][:audit][:dir]     = '/var/log/perforce'
+default[:perforce][:p4d][:audit][:file]     = 'audit'
 
-default[:p4d][:root_dir]     = '/var/perforce/root'
-default[:p4d][:depots_dir]     = '/var/perforce/depot'
-default[:p4d][:depots]     = ['depot']
-default[:p4d][:port]     = 1666
+default[:perforce][:p4d][:root_dir]     = '/var/perforce/root'
+default[:perforce][:p4d][:depots_dir]     = '/var/perforce/depot'
+default[:perforce][:p4d][:depots]     = ['depot']
+default[:perforce][:p4d][:port]     = 1666
 
-default[:p4d][:version] = '13.3'
+default[:perforce][:p4d][:version] = '14.1'
 
-default[:p4d][:pidfile] = '/var/run/p4d.pid'
+default[:perforce][:p4d][:pidfile] = '/var/run/p4d.pid'
