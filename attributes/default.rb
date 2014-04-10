@@ -6,28 +6,30 @@
 # Copyright 2013, Roblox Inc.
 #
 
-default[:perforce][:p4][:owner]           = 'root'
-default[:perforce][:p4][:group]           = 'root'
+default['perforce']['p4'].tap do |p4|
+  p4['owner']           = 'root'
+  p4['group']           = 'root'
 
-default[:perforce][:p4][:install_dir]     = '/opt/perforce'
+  p4['install_dir']     = '/opt/perforce'
 
-default[:perforce][:p4][:config_filename] = '.p4config'
+  p4['config_filename'] = '.p4config'
 
-default[:perforce][:p4][:host]            = 'localhost'
-default[:perforce][:p4][:port_num]        = '1666'
-default[:perforce][:p4][:port]            = "#{node[:perforce][:p4][:host]}:#{node[:perforce][:p4][:port_num]}"
+  p4['host']           = 'localhost'
+  p4['port_num']        = '1666'
+  p4['port']            = "#{node['perforce']['p4']['host']}:#{node['perforce']['p4']['port_num']}"
 
-default[:perforce][:p4][:user]            = node[:perforce][:p4][:owner]
-default[:perforce][:p4][:passwd]          = nil
+  p4['user']            = node['perforce']['p4']['owner']
+  p4['passwd']          = nil
 
-default[:perforce][:p4][:diff]            = nil
-default[:perforce][:p4][:editor]          = nil
-default[:perforce][:p4][:merge]           = nil
+  p4['diff']            = nil
+  p4['editor']          = nil
+  p4['merge']           = nil
 
-default[:perforce][:p4][:client]          = nil
+  p4['client']          = nil
 
-default[:perforce][:p4][:charset]         = nil
-default[:perforce][:p4][:commandcharset]  = nil
-default[:perforce][:p4][:language]        = nil
+  p4['charset']         = nil
+  p4['commandcharset']  = nil
+  p4['language']        = nil
 
-default[:perforce][:p4][:version] = '14.1'
+  p4['version'] = '14.1'
+end
