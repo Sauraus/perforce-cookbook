@@ -9,7 +9,7 @@ include_recipe 'homebrew'
 
 package 'perforce'
 
-p4 = node[:p4]
+p4 = node[:perforce][:p4]
 user_data = node[:etc][:passwd][p4[:owner]]
 home_dir_path = user_data[:dir]
 p4config_path = File.join home_dir_path, p4[:config_filename]
