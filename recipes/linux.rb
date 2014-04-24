@@ -6,6 +6,10 @@
 # Copyright 2013, Roblox Inc.
 #
 
+class Chef::Recipe
+  include PerforceFtp
+end
+
 user node['perforce']['p4']['owner'] do
   system true
   action :create
