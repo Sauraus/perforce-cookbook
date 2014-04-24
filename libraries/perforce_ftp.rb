@@ -42,3 +42,7 @@ module PerforceFtp
     "bin.#{os}"
   end
 end
+
+class Chef::Recipe
+  include PerforceFtp
+end

@@ -6,10 +6,6 @@
 # Copyright 2013, Roblox Inc.
 #
 
-class Chef::Recipe
-  include PerforceFtp
-end
-
 user node['perforce']['p4']['owner'] do
   system true
   action :create
@@ -21,7 +17,7 @@ end
 
 remote_file 'p4' do
   exe_file = node[:os] == "windows" ? "p4.exe" : "p4"
-  source get_ftp_path(node['perforce']['p4']['version'], exe_file)
+  source PerforceFtp.get_ftp_path(node['perforce']['p4']['version'], exe_file)
   path "#{node['perforce']['p4']['install_dir']}/#{exe_file}"
   owner node['perforce']['p4']['owner']
   group node['perforce']['p4']['group']
