@@ -81,9 +81,12 @@ directory node['perforce']['p4d']['audit']['dir'] do
   action :create
 end if node['perforce']['p4d']['audit']['enabled']
 
+
+exe_file = node[:os] == "windows" ? "p4d.exe" : "p4d"
+ftp_path =  get_ftp_path(node['perforce']['p4d']['version'], exe_file)
+
 remote_file 'p4d' do
-  exe_file = node[:os] == "windows" ? "p4d.exe" : "p4d"
-  source get_ftp_path(node['perforce']['p4d']['version'], exe_file)
+  source ftp_path
   path "#{node['perforce']['p4d']['install_dir']}/#{exe_file}"
   owner node['perforce']['p4d']['owner']
   group node['perforce']['p4d']['group']
