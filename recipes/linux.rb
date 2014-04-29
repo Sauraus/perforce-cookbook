@@ -15,9 +15,11 @@ directory node['perforce']['p4']['install_dir'] do
   recursive true
 end
 
+exe_file = node[:os] == "windows" ? "p4.exe" : "p4"
+ftp_path =  get_ftp_path(node['perforce']['p4']['version'], exe_file)
+
 remote_file 'p4' do
-  exe_file = node[:os] == "windows" ? "p4.exe" : "p4"
-  source get_ftp_path(node['perforce']['p4']['version'], exe_file)
+  source ftp_path
   path "#{node['perforce']['p4']['install_dir']}/#{exe_file}"
   owner node['perforce']['p4']['owner']
   group node['perforce']['p4']['group']
