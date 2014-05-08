@@ -91,6 +91,7 @@ remote_file 'p4d' do
   owner node['perforce']['p4d']['owner']
   group node['perforce']['p4d']['group']
   mode 0700
+  checksum node['perforce']['p4d']['checksum']
 end
 
 template "/etc/init.d/p4d" do
