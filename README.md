@@ -62,10 +62,11 @@ Include the recipe and set the attributes above as node or environment attribute
 Authors
 ==================
 
+- Author:: Antek Baranski <antek.baranski@gmail.com>
+- Author:: Brandon Chothia <brandon@roblox.com>
 - Author:: Josiah Kiehl <josiah@bluepojo.com>
 - Author:: Kyle Allan <kallan@riotgames.com>
-- Author:: Brandon Chothia <brandon@roblox.com>
-- Author:: Antek Baranski <antek.baranski@gmail.com>
 
-- Copyright:: 2012, Riot Games
+- Copyright:: 2014, Antek Baranski
 - Copyright:: 2013, Roblox, Inc
+- Copyright:: 2012, Riot Games
