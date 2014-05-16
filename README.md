@@ -14,7 +14,7 @@ Attributes
 p4 (client)
 * owner - System user in who's home directory the configs will be stored. File permissions use this user as well.
 * group - System group of the owner above.
-* install_dir - Where the p4 executable will be placed.
+* bin_dir - Where the p4 executable will be placed.
 * config_filename - Configuration file name.
 * host - Perforce server hostname.
 * port_num - Port number of Perforce Server.
@@ -33,7 +33,7 @@ p4 (client)
 p4d (server)
 * owner] - Owner of the p4d executable.
 * group - Group of the p4d executable.
-* install_dir - Where the p4d executable will be placed.
+* bin_dir - Where the p4d executable will be placed.
 * journal - Contains 3 attributes
     * enabled - Whether journaling is active.
     * dir - The directory in which the journal file will be stored in.
