@@ -9,7 +9,7 @@ default['perforce']['p4d'].tap do |p4d|
   p4d['owner']           = 'perforce'
   p4d['group']           = 'perforce'
 
-  p4d['install_dir']     = '/opt/perforce'
+  p4d['bin_dir']     = '/opt/perforce'
 
   p4d['journal'].tap do |journal|
     journal['enabled'] = true

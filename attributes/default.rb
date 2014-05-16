@@ -10,7 +10,7 @@ default['perforce']['p4'].tap do |p4|
   p4['owner']           = 'root'
   p4['group']           = 'root'
 
-  p4['install_dir']     = '/opt/perforce'
+  p4['bin_dir']     = '/opt/perforce'
 
   p4['config_filename'] = '.p4config'
 
