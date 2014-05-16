@@ -18,7 +18,7 @@
         else
             echo -n "Starting p4d: "
             daemon --user <%= node['perforce']['p4d']['owner'] %>\
-            <%= node['perforce']['p4d']['install_dir'] %>/p4d -d\
+            <%= node['perforce']['p4d']['bin_dir'] %>/p4d -d\
             <% if node['perforce']['p4d']['journal']['enabled'] %>
             -J <%= node['perforce']['p4d']['journal']['dir'] %>/<%= node['perforce']['p4d']['journal']['file'] %>\
             <% else %>

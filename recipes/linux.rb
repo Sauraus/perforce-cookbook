@@ -11,7 +11,7 @@ user node['perforce']['p4']['owner'] do
   action :create
 end
 
-directory node['perforce']['p4']['install_dir'] do
+directory node['perforce']['p4']['bin_dir'] do
   recursive true
 end
 
@@ -20,7 +20,7 @@ ftp_path =  get_ftp_path(node['perforce']['p4']['version'], exe_file)
 
 remote_file 'p4' do
   source ftp_path
-  path "#{node['perforce']['p4']['install_dir']}/#{exe_file}"
+  path "#{node['perforce']['p4']['bin_dir']}/#{exe_file}"
   owner node['perforce']['p4']['owner']
   group node['perforce']['p4']['group']
   mode 0755

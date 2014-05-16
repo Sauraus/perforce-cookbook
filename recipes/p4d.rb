@@ -19,10 +19,10 @@ user node['perforce']['p4d']['owner'] do
   action :create
 end
 
-directory node['perforce']['p4d']['install_dir'] do
+directory node['perforce']['p4d']['bin_dir'] do
   owner node['perforce']['p4d']['owner']
   group node['perforce']['p4d']['group']
-  permission = (node['perforce']['p4d']['install_dir'] == node['perforce']['p4']['install_dir'] && 0755) || 0700
+  permission = (node['perforce']['p4d']['bin_dir'] == node['perforce']['p4']['bin_dir'] && 0755) || 0700
   mode permission
   recursive true
 end
@@ -87,11 +87,18 @@ ftp_path =  get_ftp_path(node['perforce']['p4d']['version'], exe_file)
 
 remote_file 'p4d' do
   source ftp_path
-  path "#{node['perforce']['p4d']['install_dir']}/#{exe_file}"
+  path "#{node['perforce']['p4d']['bin_dir']}/#{exe_file}"
   owner node['perforce']['p4d']['owner']
   group node['perforce']['p4d']['group']
   mode 0700
   checksum node['perforce']['p4d']['checksum']
+end
+
+cookbook_file "#{node['perforce']['p4d']['bin_dir']}/p4auth_ad_64" do
+  source 'p4auth_ad_64'
+  owner node['perforce']['p4d']['owner']
+  group node['perforce']['p4d']['group']
+  mode 0700
 end
 
 template "/etc/init.d/p4d" do
