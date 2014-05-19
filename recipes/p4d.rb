@@ -94,13 +94,6 @@ remote_file 'p4d' do
   checksum node['perforce']['p4d']['checksum']
 end
 
-cookbook_file "#{node['perforce']['p4d']['bin_dir']}/p4auth_ad_64" do
-  source 'p4auth_ad_64'
-  owner node['perforce']['p4d']['owner']
-  group node['perforce']['p4d']['group']
-  mode 0700
-end
-
 template "/etc/init.d/p4d" do
   mode 0755
   source "p4d.erb"

@@ -10,4 +10,6 @@ when "linux"
   include_recipe "perforce::linux"
 when "darwin"
   include_recipe "perforce::macosx"
+else
+  log "Unsupported OS #{node[:os]}"
 end
