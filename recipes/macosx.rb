@@ -18,6 +18,8 @@ shellrc_path = File.join home_dir_path, case user_data[:shell]
                                           '.bash_profile'
                                         when '/bin/zsh'
                                           '.zshrc'
+                                        else
+                                          '.profile'
                                         end
 
 set_p4config_line = "p4 set P4CONFIG=\"#{p4config_path}\""
