@@ -29,6 +29,9 @@
             -A <%= node['perforce']['p4d']['audit']['dir'] %>/<%= node['perforce']['p4d']['audit']['file'] %>\
             <% end %>
             -r <%= node['perforce']['p4d']['root_dir'] %>\
+            <% if node['perforce']['p4d']['auth_server'] %>
+            -a <%= node['perforce']['p4d']['auth_server'] %>\
+            <% end %>
             -p <%= node['perforce']['p4d']['port'] %>
             pidof p4d > <%= "#{node['perforce']['p4d']['pidfile']}"  %>
         fi

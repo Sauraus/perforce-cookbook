@@ -30,6 +30,7 @@ default['perforce']['p4d'].tap do |p4d|
   p4d['depots_dir']     = '/var/perforce/depot'
   p4d['depots']    = ['depot']
   p4d['port']     = 1666
+  p4d['auth_server'] = nil
 
   p4d['version'] = '14.1'
   p4d['checksum'] = 'f8e708d47792c0bfaa9fdced23b4a4bb1e013a2b5ba35ace6ca838985f4264b9'
