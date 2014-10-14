@@ -1,5 +1,6 @@
-export P4PORT=<%= @p4_port %>
-export P4CHARSET=<%= @p4_charset %>
+#!/bin/sh
+export P4PORT=<%= node['perforce']['p4']['port'] %>
+export P4CHARSET=<%= node['perforce']['p4']['charset'] %>
 export P4USER=`whoami`
-export P4CONFIG=<%= @p4_config %>
+export P4CONFIG=<%= node['perforce']['p4']['config_filename'] %>
 export PATH=<%= node['perforce']['p4']['bin_dir'] %>:$PATH

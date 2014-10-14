@@ -18,7 +18,7 @@ default['perforce']['p4'].tap do |p4|
   p4['port_num']        = '1666'
   p4['port']            = "#{node['perforce']['p4']['host']}:#{node['perforce']['p4']['port_num']}"
 
-  p4['user']            = node['perforce']['p4']['owner']
+  p4['user']            = nil
   p4['passwd']          = nil
 
   p4['diff']            = nil

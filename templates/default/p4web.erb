@@ -1,0 +1,78 @@
+#!/bin/bash
+#
+#       /etc/rc.d/init.d/p4web
+# chkconfig: 2345 80 30
+# description: starts/stops the perforce web server (p4web)
+
+# Source function library.
+. /etc/init.d/functions
+
+start() {
+    if [ -e <%= node['perforce']['p4web']['pidfile'] %> ]; then
+        status_p4d=`pidof p4d`
+        if test -n "$status_p4d"; then
+            echo "Service p4web failed to start: p4web is already running"
+        else
+            echo "Service p4web failed to start: pid file <%= "#{node['perforce']['p4web']['pidfile']}" %> exists. Did p4web not stop correctly?"
+        fi
+    else
+        echo -n "Starting p4web: "
+        daemon --user <%= node['perforce']['p4web']['owner'] %> \
+        <%= node['perforce']['p4web']['bin_dir'] %>/p4web \
+        <% if node['perforce']['p4web']['port'] %>
+            -w <%= node['perforce']['p4web']['port'] %> \
+        <% end %>
+        <% if node['perforce']['p4web']['mode'] == 'viewer' %>
+            -b -u <%= node['perforce']['p4']['user'] %> -P <%= node['perforce']['p4']['passwd'] %> \
+        <% else %>
+            -B \
+        <% end %>
+        <% if node['perforce']['p4']['client'] %>
+            -c <%= node['perforce']['p4']['client'] %> \
+        <% end %>
+        <% if node['perforce']['p4']['host'] %>
+            -H <%= node['perforce']['p4']['host'] %> \
+        <% end %>
+        <% if node['perforce']['p4']['charset'] %>
+            -C <%= node['perforce']['p4']['charset'] %> \
+        <% end %>
+            -p <%= node['perforce']['p4']['port'] %>
+        pidof p4web > <%= node['perforce']['p4web']['pidfile'] %>
+    fi
+}
+
+stop() {
+    echo -n "Shutting down p4web: "
+    value=$(< <%= node['perforce']['p4web']['pidfile'] %>)
+    kill "$value"
+    rm <%= node['perforce']['p4web']['pidfile'] %>
+}
+
+status() {
+    status_p4web=`pidof p4web`
+    if test -n "$status_p4web" ; then
+        echo "running"
+        else
+        echo "stopped"
+    fi
+}
+
+case "$1" in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    status)
+        status
+    ;;
+    restart)
+        stop
+        start
+    ;;
+    *)
+        echo "Usage: p4d {start|stop|status|restart}"
+        exit 1
+    ;;
+esac

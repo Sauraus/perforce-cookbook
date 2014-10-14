@@ -32,8 +32,4 @@ template "/etc/profile.d/perforce.sh" do
   group 'root'
   mode 0755
   source "perforce.sh.erb"
-  variables(:p4_port => node['perforce']['p4']['port'],
-            :p4_charset => node['perforce']['p4']['charset'],
-            :p4_user => node['perforce']['p4']['user'],
-            :p4_config => node['perforce']['p4']['config_filename'])
 end

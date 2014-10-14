@@ -1,5 +1,11 @@
 # Perforce Cookbook Change Log
 
+##1.0.0
+* Move to BerkShelf 3
+* Added p4web to the install options
+* refactor perforce.sh creation
+* cleanup p4d erb template
+
 ##0.0.11
 * Add auth server delegation option
 
