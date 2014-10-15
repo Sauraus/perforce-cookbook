@@ -1,5 +1,8 @@
 # Perforce Cookbook Change Log
 
+##1.0.2
+* Handle p4web restarts gracefully with no PID file present
+
 ##1.0.1
 * Tune p4web config
 

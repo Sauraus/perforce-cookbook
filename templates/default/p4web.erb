@@ -44,9 +44,19 @@ start() {
 
 stop() {
     echo -n "Shutting down p4web: "
-    value=$(< <%= node['perforce']['p4web']['pidfile'] %>)
-    kill "$value"
-    rm <%= node['perforce']['p4web']['pidfile'] %>
+    if [ -e <%= node['perforce']['p4web']['pidfile'] %> ]; then
+        value=$(< <%= node['perforce']['p4web']['pidfile'] %>)
+        kill "$value"
+        rm <%= node['perforce']['p4web']['pidfile'] %>
+    else
+        status_p4web=`pidof p4web`
+        if test -n "$status_p4web" ; then
+            echo -n "No PID file found, but the process was found with PID: $status_p4web "
+            kill "$status_p4web"
+        else
+            echo -n "No PID file found, nor any process for p4web "
+        fi
+    fi
 }
 
 status() {
