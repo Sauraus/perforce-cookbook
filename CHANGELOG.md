@@ -1,5 +1,8 @@
 # Perforce Cookbook Change Log
 
+##1.0.1
+* Tune p4web config
+
 ##1.0.0
 * Move to BerkShelf 3
 * Added p4web to the install options

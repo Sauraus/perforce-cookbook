@@ -17,26 +17,27 @@ start() {
         fi
     else
         echo -n "Starting p4web: "
+        export P4TICKETS=/diw/p4web/.p4tickets
         daemon --user <%= node['perforce']['p4web']['owner'] %> \
         <%= node['perforce']['p4web']['bin_dir'] %>/p4web \
         <% if node['perforce']['p4web']['port'] %>
             -w <%= node['perforce']['p4web']['port'] %> \
         <% end %>
         <% if node['perforce']['p4web']['mode'] == 'viewer' %>
-            -b -u <%= node['perforce']['p4']['user'] %> -P <%= node['perforce']['p4']['passwd'] %> \
+            -b -u <%= node['perforce']['p4']['user'] %> \
         <% else %>
             -B \
         <% end %>
         <% if node['perforce']['p4']['client'] %>
             -c <%= node['perforce']['p4']['client'] %> \
         <% end %>
-        <% if node['perforce']['p4']['host'] %>
-            -H <%= node['perforce']['p4']['host'] %> \
-        <% end %>
         <% if node['perforce']['p4']['charset'] %>
             -C <%= node['perforce']['p4']['charset'] %> \
         <% end %>
-            -p <%= node['perforce']['p4']['port'] %>
+        <% if node['perforce']['p4web']['options'] %>
+            <%= node['perforce']['p4web']['options'] %> \
+        <% end %>
+            -p <%= node['perforce']['p4']['port'] %> &
         pidof p4web > <%= node['perforce']['p4web']['pidfile'] %>
     fi
 }
@@ -69,6 +70,7 @@ case "$1" in
     ;;
     restart)
         stop
+        sleep 5
         start
     ;;
     *)
