@@ -1,5 +1,9 @@
 # Perforce Cookbook Change Log
 
+##1.1.0
+* Enable override of P4USER in perforce.sh
+* Cleanup some of the export P4xxxx
+
 ##1.0.2
 * Handle p4web restarts gracefully with no PID file present
 
