@@ -35,5 +35,6 @@ default['perforce']['p4d'].tap do |p4d|
   p4d['version'] = '14.1'
   p4d['checksum'] = 'f8e708d47792c0bfaa9fdced23b4a4bb1e013a2b5ba35ace6ca838985f4264b9'
 
+  p4d['name'] = nil
   p4d['pidfile'] = '/var/run/p4d.pid'
 end

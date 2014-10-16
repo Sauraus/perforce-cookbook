@@ -1,5 +1,9 @@
 # Perforce Cookbook Change Log
 
+##2.0.0
+* Add option to name server, needed for replication
+* Remove the shell script for P4 settings, this causes to much trouble in automation
+
 ##1.1.0
 * Enable override of P4USER in perforce.sh
 * Cleanup some of the export P4xxxx

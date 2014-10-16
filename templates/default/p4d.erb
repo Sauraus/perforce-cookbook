@@ -34,6 +34,9 @@
             <% if node['perforce']['p4d']['auth_server'] %>
             -a <%= node['perforce']['p4d']['auth_server'] %>\
             <% end %>
+            <% if node['perforce']['p4d']['name'] %>
+            -In <%= node['perforce']['p4d']['name'] %>\
+            <% end %>
             -p <%= node['perforce']['p4d']['port'] %>
             pidof p4d > <%= node['perforce']['p4d']['pidfile'] %>
         fi
