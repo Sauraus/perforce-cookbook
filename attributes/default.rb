@@ -12,7 +12,7 @@ default['perforce']['p4'].tap do |p4|
 
   p4['bin_dir']     = '/opt/perforce'
 
-  p4['config_filename'] = '.p4config'
+  p4['config_filename'] = '~/.p4config'
 
   p4['host']           = 'localhost'
   p4['port_num']        = '1666'

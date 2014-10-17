@@ -1,5 +1,8 @@
 # Perforce Cookbook Change Log
 
+##2.0.1
+* Fix path for .p4config file to be ~/.p4config
+
 ##2.0.0
 * Add option to name server, needed for replication
 * Remove the shell script for P4 settings, this causes to much trouble in automation
