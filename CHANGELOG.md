@@ -1,5 +1,8 @@
 # Perforce Cookbook Change Log
 
+##2.0.2
+* Update p4d checksum for latest update on Perforce ftp server
+
 ##2.0.1
 * Fix path for .p4config file to be ~/.p4config
 
