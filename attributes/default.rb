@@ -31,6 +31,6 @@ default['perforce']['p4'].tap do |p4|
   p4['commandcharset']  = nil
   p4['language']        = nil
 
-  p4['version'] = '14.1'
-  p4['checksum'] = 'f2e02b98a037da5f41cba6764a7012c86b69765494a504989345ca3e03312434'
+  p4['version'] = '14.2'
+  p4['checksum'] = 'f36ac0a8b9fb36234be727a600f989e3ddc269da5d12d6871b1f396ee442efd2'
 end

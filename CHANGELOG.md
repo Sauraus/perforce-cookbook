@@ -1,5 +1,8 @@
 # Perforce Cookbook Change Log
 
+##2.0.3
+* Update p4 to 14.2
+
 ##2.0.2
 * Update p4d checksum for latest update on Perforce ftp server
 
