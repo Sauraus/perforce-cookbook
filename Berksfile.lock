@@ -4,4 +4,4 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  perforce (1.0.0)
+  perforce (2.0.4)

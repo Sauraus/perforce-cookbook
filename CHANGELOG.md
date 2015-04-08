@@ -1,5 +1,8 @@
 # Perforce Cookbook Change Log
 
+##2.0.4
+* Update p4 checksum for 14.2 update
+
 ##2.0.3
 * Update p4 to 14.2
 
