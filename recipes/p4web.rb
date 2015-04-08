@@ -36,7 +36,6 @@ remote_file 'p4web' do
   owner node['perforce']['p4web']['owner']
   group node['perforce']['p4web']['group']
   mode 0700
-  checksum node['perforce']['p4web']['checksum']
   notifies :restart, "service[p4web]", :delayed
 end
 

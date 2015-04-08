@@ -1,5 +1,8 @@
 # Perforce Cookbook Change Log
 
+##2.1.0
+* Strip checksum from download, causes problems on p4/p4d/p4web updates that happen in place
+
 ##2.0.4
 * Update p4 checksum for 14.2 update
 

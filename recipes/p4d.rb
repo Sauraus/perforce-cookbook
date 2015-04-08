@@ -91,7 +91,6 @@ remote_file 'p4d' do
   owner node['perforce']['p4d']['owner']
   group node['perforce']['p4d']['group']
   mode 0700
-  checksum node['perforce']['p4d']['checksum']
 end
 
 template "/etc/init.d/p4d" do
@@ -100,6 +99,6 @@ template "/etc/init.d/p4d" do
 end
 
 service "p4d" do
-  supports :status => true, :restart => true
+  supports :status => true, :restart => true, :stop => true, :enable => true
   action [ :enable, :start ]
 end

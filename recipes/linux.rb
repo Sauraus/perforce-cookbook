@@ -24,7 +24,6 @@ remote_file 'p4' do
   owner node['perforce']['p4']['owner']
   group node['perforce']['p4']['group']
   mode 0755
-  checksum node['perforce']['p4']['checksum']
 end
 
 template "/etc/profile.d/perforce.sh" do
