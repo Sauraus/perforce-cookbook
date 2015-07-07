@@ -83,7 +83,7 @@ end if node['perforce']['p4d']['audit']['enabled']
 
 
 exe_file = node[:os] == "windows" ? "p4d.exe" : "p4d"
-ftp_path =  get_ftp_path(node['perforce']['p4d']['version'], exe_file)
+ftp_path =  get_ftp_path(node['perforce']['p4d']['ftp_path'], node['perforce']['p4d']['version'], exe_file)
 
 remote_file 'p4d' do
   source ftp_path

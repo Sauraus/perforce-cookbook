@@ -1,5 +1,10 @@
 # Perforce Cookbook Change Log
 
+##2.2.0
+* Added Windows support for p4.exe client
+* Added option to download p4 executables from a local server
+* Bump p4 & p4d to 15.1 release
+
 ##2.1.0
 * Strip checksum from download, causes problems on p4/p4d/p4web updates that happen in place
 

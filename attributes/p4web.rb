@@ -20,6 +20,8 @@ default['perforce']['p4web'].tap do |p4web|
   p4web['mode'] = 'viewer' # or standard
   p4web['port'] = nil
   p4web['options'] = nil
+
+  p4web['ftp_path'] = nil
 end
 
 default['perforce']['p4']['host'] = node['fqdn']

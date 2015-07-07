@@ -3,3 +3,5 @@
 .vagrant
 .idea
 Vagrantfile
+.kitchen/
+.kitchen.local.yml

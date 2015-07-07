@@ -28,7 +28,7 @@ directory node['perforce']['p4web']['bin_dir'] do
 end
 
 exe_file = node[:os] == "windows" ? "p4web.exe" : "p4web"
-ftp_path =  get_ftp_path(node['perforce']['p4web']['version'], exe_file)
+ftp_path =  get_ftp_path(node['perforce']['p4web']['ftp_path'], node['perforce']['p4web']['version'], exe_file)
 
 remote_file 'p4web' do
   source ftp_path

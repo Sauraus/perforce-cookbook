@@ -1,0 +1,19 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-6.5
+  - name: ubuntu-14.04
+
+
+suites:
+  - name: default
+    run_list:
+      - recipe[perforce::default]
+  - name: p4d
+    run_list:
+      - recipe[perforce::p4d]
