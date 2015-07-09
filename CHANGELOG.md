@@ -1,5 +1,8 @@
 # Perforce Cookbook Change Log
 
+##2.2.1
+* Fix bad ftp_path concat
+
 ##2.2.0
 * Added Windows support for p4.exe client
 * Added option to download p4 executables from a local server
