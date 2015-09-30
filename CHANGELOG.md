@@ -1,5 +1,9 @@
 # Perforce Cookbook Change Log
 
+##2.3.0
+* Fix file resource path to use ::File.join()
+* Fix Windows file creation permissions
+
 ##2.2.1
 * Fix bad ftp_path concat
 

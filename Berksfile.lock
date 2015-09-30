@@ -4,4 +4,12 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  perforce (2.1.0)
+  build-essential (2.2.3)
+  chef_handler (1.2.0)
+  homebrew (1.13.0)
+    build-essential (>= 2.1.2)
+  perforce (2.3.0)
+    homebrew (>= 0.0.0)
+    windows (>= 0.0.0)
+  windows (1.38.2)
+    chef_handler (>= 0.0.0)

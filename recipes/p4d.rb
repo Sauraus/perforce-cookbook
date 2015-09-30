@@ -22,7 +22,7 @@ end
 directory node['perforce']['p4d']['bin_dir'] do
   owner node['perforce']['p4d']['owner']
   group node['perforce']['p4d']['group']
-  permission = (node['perforce']['p4d']['bin_dir'] == node['perforce']['p4']['bin_dir'] && 0755) || 0700
+  permission = (node['perforce']['p4d']['bin_dir'] == node['perforce']['p4']['bin_dir'] && 00755) || 00700
   mode permission
   recursive true
 end
@@ -30,7 +30,7 @@ end
 directory node['perforce']['p4d']['root_dir'] do
   owner node['perforce']['p4d']['owner']
   group node['perforce']['p4d']['group']
-  mode 0700
+  mode 00700
   recursive true
 end
 
@@ -38,7 +38,7 @@ if node['perforce']['p4d']['depots_dir'] != node['perforce']['p4d']['root_dir']
   directory node['perforce']['p4d']['depots_dir'] do
     owner node['perforce']['p4d']['owner']
     group node['perforce']['p4d']['group']
-    mode 0700
+    mode 00700
     recursive true
   end
 
@@ -47,7 +47,7 @@ if node['perforce']['p4d']['depots_dir'] != node['perforce']['p4d']['root_dir']
       path "#{node['perforce']['p4d']['depots_dir']}/#{d}"
       owner node['perforce']['p4d']['owner']
       group node['perforce']['p4d']['group']
-      mode 0700
+      mode 00700
     end
 
     link d do
@@ -60,7 +60,7 @@ end
 directory node['perforce']['p4d']['journal']['dir'] do
   owner node['perforce']['p4d']['owner']
   group node['perforce']['p4d']['group']
-  mode 0700
+  mode 00700
   recursive true
   action :create
 end if node['perforce']['p4d']['journal']['enabled']
@@ -68,7 +68,7 @@ end if node['perforce']['p4d']['journal']['enabled']
 directory node['perforce']['p4d']['log_dir'] do
   owner node['perforce']['p4d']['owner']
   group node['perforce']['p4d']['group']
-  mode 0700
+  mode 00700
   recursive true
   action :create
 end
@@ -76,25 +76,25 @@ end
 directory node['perforce']['p4d']['audit']['dir'] do
   owner node['perforce']['p4d']['owner']
   group node['perforce']['p4d']['group']
-  mode 0700
+  mode 00700
   recursive true
   action :create
 end if node['perforce']['p4d']['audit']['enabled']
 
 
-exe_file = node[:os] == "windows" ? "p4d.exe" : "p4d"
+exe_file = node[:os] == 'windows' ? 'p4d.exe' : 'p4d'
 ftp_path =  get_ftp_path(node['perforce']['p4d']['ftp_path'], node['perforce']['p4d']['version'], exe_file)
 
 remote_file 'p4d' do
   source ftp_path
-  path "#{node['perforce']['p4d']['bin_dir']}/#{exe_file}"
+  path ::File.join(node['perforce']['p4']['bin_dir'], exe_file)
   owner node['perforce']['p4d']['owner']
   group node['perforce']['p4d']['group']
-  mode 0700
+  mode 00700
 end
 
 template "/etc/init.d/p4d" do
-  mode 0755
+  mode 00755
   source "p4d.erb"
 end
 
